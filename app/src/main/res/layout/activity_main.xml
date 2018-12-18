@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/message"
+            style="@style/message"/>
+
+        <TableLayout
+            style="@style/grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableRow style="@style/grid_row">
+
+                <TextView
+                    android:id="@+id/cell_0"
+                    style="@style/grid_cell"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/cell_1"
+                    style="@style/grid_cell"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/cell_2"
+                    style="@style/grid_cell"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow style="@style/grid_row">
+
+                <TextView
+                    android:id="@+id/cell_3"
+                    style="@style/grid_cell"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/cell_4"
+                    style="@style/grid_cell"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/cell_5"
+                    style="@style/grid_cell"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow style="@style/grid_row">
+
+                <TextView
+                    android:id="@+id/cell_6"
+                    style="@style/grid_cell"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/cell_7"
+                    style="@style/grid_cell"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/cell_8"
+                    style="@style/grid_cell"
+                    android:text="" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
