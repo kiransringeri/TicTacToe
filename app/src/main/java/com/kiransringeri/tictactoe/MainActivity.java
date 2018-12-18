@@ -1,5 +1,6 @@
 package com.kiransringeri.tictactoe;
 
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,22 @@ public class MainActivity extends AppCompatActivity implements GridView {
     private TextView messageView = null;
 
     private boolean clickEnabled = true;
+    private MediaPlayer loserSound = null;
+    private MediaPlayer winnerSound = null;
+    private MediaPlayer gameOverSound = null;
+    private MediaPlayer startGameSound = null;
+    private MediaPlayer waitForOtherSound = null;
+    private MediaPlayer yourTurnSound = null;
+    private MediaPlayer nowPlaying = null;
+
+    private void playMedia(MediaPlayer mp){
+        if(nowPlaying != null && nowPlaying.isPlaying()){
+            nowPlaying.pause();
+        }
+        nowPlaying = mp;
+        mp.seekTo(0);
+        mp.start();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +50,13 @@ public class MainActivity extends AppCompatActivity implements GridView {
         presenter = new GridPresenter(this);
 
         messageView = findViewById(R.id.message);
+
+        loserSound = MediaPlayer.create(this, R.raw.loser);
+        winnerSound = MediaPlayer.create(this, R.raw.winner);
+        gameOverSound = MediaPlayer.create(this, R.raw.tie);
+        startGameSound = MediaPlayer.create(this, R.raw.game_start);
+        waitForOtherSound = MediaPlayer.create(this, R.raw.wait_for_other);
+        yourTurnSound = MediaPlayer.create(this, R.raw.your_turn);
 
         clickHandler = new CellClickHandler();
 
@@ -46,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements GridView {
         }
 
         messageView.setText("Click any cell to start");
+        playMedia(startGameSound);
     }
 
     private void restart(){
@@ -58,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements GridView {
                     txt.setText("");
                 }
                 messageView.setText("Click any cell to start");
+                playMedia(startGameSound);
             }
         }, 1000*4);
 
@@ -87,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements GridView {
         TextView txt = cellNumberMap.get(cellNum);
         txt.setTextColor(getResources().getColor(R.color.colorOtherPlayer, getTheme()));
         txt.setText("O");
-        messageView.setText("The other person has completed his move. Now its your turn");
     }
 
     @Override
@@ -98,28 +123,38 @@ public class MainActivity extends AppCompatActivity implements GridView {
     @Override
     public void winner(){
         messageView.setText("Congradulations! You won.");
+        playMedia(winnerSound);
         restart();
     }
 
     @Override
     public void loser(){
         messageView.setText("Bad luck! You lost. Better luck next time");
+        playMedia(loserSound);
         restart();
     }
 
     @Override
     public void tied(){
         messageView.setText("Its a tie! Neither of you lost. Try to win next time.");
+        playMedia(gameOverSound);
         restart();
     }
 
     @Override
     public void enableClick(){
         clickEnabled = true;
+        messageView.setText("The other person has completed his move. Now its your turn");
+        playMedia(yourTurnSound);
     }
 
     @Override
     public void disableClick(){
         clickEnabled = false;
+    }
+
+    @Override
+    public void otherPlayerTurn(){
+        playMedia(waitForOtherSound);
     }
 }

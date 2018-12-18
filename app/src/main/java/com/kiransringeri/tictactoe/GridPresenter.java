@@ -31,6 +31,8 @@ public class GridPresenter {
                 //        TODO: Check if the current user is the winner
                 int cellNum = otherPlayerMove();
                 if(cellNum != -1) {
+                    view.otherPlayerTurn();
+
                     try {
                         Thread.sleep(1000*2);
                     } catch (InterruptedException e) {

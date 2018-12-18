@@ -9,4 +9,5 @@ public interface GridView {
     public void tied();
     public void enableClick();
     public void disableClick();
+    public void otherPlayerTurn();
 }
