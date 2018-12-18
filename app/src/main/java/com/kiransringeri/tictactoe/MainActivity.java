@@ -122,30 +122,50 @@ public class MainActivity extends AppCompatActivity implements GridView {
 
     @Override
     public void winner(){
-        messageView.setText("Congradulations! You won.");
-        playMedia(winnerSound);
-        restart();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                messageView.setText("Congradulations! You won.");
+                playMedia(winnerSound);
+                restart();
+            }
+        });
     }
 
     @Override
     public void loser(){
-        messageView.setText("Bad luck! You lost. Better luck next time");
-        playMedia(loserSound);
-        restart();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                messageView.setText("Bad luck! You lost. Better luck next time");
+                playMedia(loserSound);
+                restart();
+            }
+        });
     }
 
     @Override
     public void tied(){
-        messageView.setText("Its a tie! Neither of you lost. Try to win next time.");
-        playMedia(gameOverSound);
-        restart();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                messageView.setText("Its a tie! Neither of you lost. Try to win next time.");
+                playMedia(gameOverSound);
+                restart();
+            }
+        });
     }
 
     @Override
     public void enableClick(){
-        clickEnabled = true;
-        messageView.setText("The other person has completed his move. Now its your turn");
-        playMedia(yourTurnSound);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                clickEnabled = true;
+                messageView.setText("The other person has completed his move. Now its your turn");
+                playMedia(yourTurnSound);
+            }
+        });
     }
 
     @Override
