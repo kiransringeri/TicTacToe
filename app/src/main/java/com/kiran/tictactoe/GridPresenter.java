@@ -1,4 +1,4 @@
-package com.kiransringeri.tictactoe;
+package com.kiran.tictactoe;
 
 import java.util.ArrayList;
 import java.util.List;

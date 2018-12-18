@@ -1,4 +1,4 @@
-package com.kiransringeri.tictactoe;
+package com.kiran.tictactoe;
 
 public interface GridView {
     public void markO(int cellNum);

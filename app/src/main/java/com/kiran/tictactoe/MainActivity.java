@@ -1,4 +1,4 @@
-package com.kiransringeri.tictactoe;
+package com.kiran.tictactoe;
 
 import android.media.MediaPlayer;
 import android.os.Handler;
@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements GridView {
 
