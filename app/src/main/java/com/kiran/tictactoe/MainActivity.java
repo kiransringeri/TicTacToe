@@ -27,6 +27,10 @@ import com.google.android.gms.tasks.Task;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * You only need to include the application ID (792742849857) in your Android app.
+ *
+ */
 public class MainActivity extends AppCompatActivity implements GridView {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -156,6 +160,9 @@ public class MainActivity extends AppCompatActivity implements GridView {
         }
         signedInAccount = user;
 //        TODO: If user logged in now, then need to clear the board and start again
+        if(signedInAccount != null){
+            
+        }
     }
 
     private void initGame(){
