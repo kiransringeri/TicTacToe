@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -234,17 +235,27 @@ public class MainActivity extends AppCompatActivity implements GridView {
                 });
     }
     @Override
-    public void markX(int cellNum){
-        TextView txt = cellNumberMap.get(cellNum);
-        txt.setTextColor(getResources().getColor(R.color.colorCurrentPlayer, getTheme()));
-        txt.setText("X");
+    public void markX(final int cellNum){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                TextView txt = cellNumberMap.get(cellNum);
+                txt.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.colorCurrentPlayer));//getResources().getColor(R.color.colorCurrentPlayer, getTheme()));
+                txt.setText("X");
+            }
+        });
     }
 
     @Override
-    public void markO(int cellNum){
-        TextView txt = cellNumberMap.get(cellNum);
-        txt.setTextColor(getResources().getColor(R.color.colorOtherPlayer, getTheme()));
-        txt.setText("O");
+    public void markO(final int cellNum){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                TextView txt = cellNumberMap.get(cellNum);
+                txt.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.colorOtherPlayer));//getResources().getColor(R.color.colorOtherPlayer, getTheme()));
+                txt.setText("O");
+            }
+        });
     }
 
     @Override

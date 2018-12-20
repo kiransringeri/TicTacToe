@@ -15,6 +15,10 @@ public class GridPresenter {
     public void cellClicked(int cellNum){
 //        User clicked this cell
 //        Mark this cell as "X"
+        if(model.isCellLocked(cellNum)){
+            return;
+        }
+
         view.disableClick();
 
         view.markX(cellNum);
